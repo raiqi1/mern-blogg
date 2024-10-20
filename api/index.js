@@ -16,8 +16,10 @@ mongoose
     console.log('MongoDb is connected');
   })
   .catch((err) => {
-    console.log(err);
+    console.error('Error connecting to MongoDB:', err);
   });
+  // console.log('MONGO:', process.env.MONGO);
+
 
 const __dirname = path.resolve();
 

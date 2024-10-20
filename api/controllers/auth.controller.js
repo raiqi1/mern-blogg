@@ -4,7 +4,7 @@ import { errorHandler } from '../utils/error.js';
 import jwt from 'jsonwebtoken';
 
 export const signup = async (req, res, next) => {
-  const { username, email, password } = req.body;
+  const { username, email, password,isAdmin } = req.body;
 
   if (
     !username ||
@@ -23,11 +23,12 @@ export const signup = async (req, res, next) => {
     username,
     email,
     password: hashedPassword,
+    isAdmin
   });
 
   try {
     await newUser.save();
-    res.json('Signup successful');
+    res.json(newUser);
   } catch (error) {
     next(error);
   }
